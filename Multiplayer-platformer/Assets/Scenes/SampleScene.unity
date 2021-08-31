@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.20749143, g: 0.21147497, b: 0.14576834, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,7 +294,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 4420170493798415386, guid: 41375c56b46617e489d3ad62e1aba208, type: 3}
+  playerPrefab: {fileID: 4420170493798415386, guid: d620b844bc3cb344f9526786b9af9980, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
@@ -400,12 +400,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 650554300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b212528a94edf749a5e5be5fdd618b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b8ae063b67a24f408f014288010cb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  testFalling: {fileID: 1771624116652886016, guid: ab3ebf483897b0548acc48b02c1805c3, type: 3}
+  testFalling: {fileID: 1771624116652886016, guid: 94a971e0d61622b44bb38e6ffe1fe0ee, type: 3}
   betweenTime: 1
 --- !u!1 &653260035
 GameObject:
@@ -440,7 +440,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 0}
+  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!4 &653260038
 Transform:
   m_ObjectHideFlags: 0
@@ -539,7 +539,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b82c83aede621a345b46d261e6de85e7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: fd37125c4074122449806818bb090992, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LightType: 0
+  m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}

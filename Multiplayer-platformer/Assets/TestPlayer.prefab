@@ -51,7 +51,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 41375c56b46617e489d3ad62e1aba208
+  m_AssetId: d620b844bc3cb344f9526786b9af9980
   hasSpawned: 0
 --- !u!114 &5870089428933527996
 MonoBehaviour:
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b82c83aede621a345b46d261e6de85e7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: fd37125c4074122449806818bb090992, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4420170493798415386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d79cf802876b284ead94d46b59870b4, type: 3}
+  m_Script: {fileID: 11500000, guid: e4a62b2f1a2735847974022f1fbe9f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
