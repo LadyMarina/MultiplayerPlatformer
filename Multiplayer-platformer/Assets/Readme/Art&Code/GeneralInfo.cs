@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 namespace UndefinedBehaviour
