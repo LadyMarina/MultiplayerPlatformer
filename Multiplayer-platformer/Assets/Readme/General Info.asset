@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6802bbb04da6b4c41a08ab901937ff69, type: 3}
+  m_Name: General Info
+  m_EditorClassIdentifier: 
+  TopImage: {fileID: 2800000, guid: 2c804d18e8fc3e24bab7fd28879a4180, type: 3}
+  ProjectLinks:
+  - Name: Coding Conventions
+    URL: https://www.codepile.net/pile/jzQJbNyO
+  - Name: Trello
+    URL: https://trello.com/b/le0I0iUC
+  - Name: Miro
+    URL: https://miro.com/app/live-embed/o9J_l0eQfQI=?boardAccessToken=JzAaZyYwMefu57UE66TGt0XwRsYilabk&autoplay=true?boardId=o9J_l0eQfQI=
+  - Name: Github
+    URL: https://github.com/LadyMarina/MultiplayerPlatformer
+  UndefinedBehaviourLinks:
+  - Name: Marina Chavarria Social Networks
+    URL: https://twitter.com/LadyMarinaDev
+  - Name: Joan Ortiga Social Networks
+    URL: https://joanortiga.site/

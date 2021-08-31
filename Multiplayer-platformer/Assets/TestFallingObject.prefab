@@ -94,12 +94,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b82c83aede621a345b46d261e6de85e7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: fd37125c4074122449806818bb090992, type: 3}
   m_Color: {r: 0.101178885, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -120,5 +120,5 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: ab3ebf483897b0548acc48b02c1805c3
+  m_AssetId: 94a971e0d61622b44bb38e6ffe1fe0ee
   hasSpawned: 0
