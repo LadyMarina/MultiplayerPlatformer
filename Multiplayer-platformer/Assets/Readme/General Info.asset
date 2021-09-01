@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: General Info
   m_EditorClassIdentifier: 
   TopImage: {fileID: 2800000, guid: 2c804d18e8fc3e24bab7fd28879a4180, type: 3}
+  Description: This is the readme.
   ProjectLinks:
   - Name: Coding Conventions
     URL: https://www.codepile.net/pile/jzQJbNyO

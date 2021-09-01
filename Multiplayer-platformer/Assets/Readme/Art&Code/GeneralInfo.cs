@@ -10,6 +10,7 @@ namespace UndefinedBehaviour
     public class GeneralInfo : ScriptableObject
     {
         public Texture2D TopImage;
+        public string Description;
         public List<Link> ProjectLinks = new List<Link>();
         public List<Link> UndefinedBehaviourLinks = new List<Link>();
     }
@@ -43,6 +44,8 @@ namespace UndefinedBehaviour
             label.fontSize = 14;
             EditorGUILayout.LabelField("Marina Chavarria & Joan Ortiga", label);
             EditorGUILayout.Space(10);
+            
+            GUILayout.Label(generalInfo.Description);
 
             GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
             buttonStyle.margin = new RectOffset(buttonStyle.margin.left, 15, buttonStyle.margin.top, buttonStyle.margin.bottom);
