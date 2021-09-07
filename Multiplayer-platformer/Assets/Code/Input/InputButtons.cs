@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UndefinedBehaviour
+namespace UndefinedBehaviour.Input
 {
     public class InputButtons
     {
@@ -26,7 +26,7 @@ namespace UndefinedBehaviour
         {
             foreach (var key in _keys)
             {
-                if (Input.GetKeyDown(key))
+                if (UnityEngine.Input.GetKeyDown(key))
                 {
                     return true;
                 }
@@ -34,7 +34,7 @@ namespace UndefinedBehaviour
             
             foreach (var button in _buttons)
             {
-                if (Input.GetButtonDown(button))
+                if (UnityEngine.Input.GetButtonDown(button))
                 {
                     return true;
                 }
@@ -42,7 +42,43 @@ namespace UndefinedBehaviour
 
             return false;
         }
+    }
+    
+    public class InputAxis
+    {
+        private const int MAX_SLOTS = 2;
+        
+        private KeyCode[] _keys = new KeyCode[MAX_SLOTS * 2];
+        private string[] _buttons = new string[MAX_SLOTS];
+        
+        /// <summary>
+        /// Limited to MAX_SLOTS * 2 value.
+        /// </summary>
+        /// <param name="keys"></param>
+        public InputAxis(KeyCode[] keys)
+        {
+            for (int i = 0; i < MAX_SLOTS * 2; i++)
+            {
+                _keys[i] = keys[i];
+            }
+        }
 
-       
+        /// <summary>
+        /// Limited to MAX_SLOTS * 2 value for keys, and MAX_SLOTS for buttons
+        /// </summary>
+        /// <param name="keys"></param>
+        /// <param name="buttons"></param>
+        public InputAxis(KeyCode[] keys, string[] buttons)
+        {
+            for (int i = 0; i < MAX_SLOTS * 2; i++)
+            {
+                _keys[i] = keys[i];
+            }
+            
+            for (int i = 0; i < MAX_SLOTS; i++)
+            {
+                _buttons[i] = buttons[i];
+            }
+        }
     }
 }

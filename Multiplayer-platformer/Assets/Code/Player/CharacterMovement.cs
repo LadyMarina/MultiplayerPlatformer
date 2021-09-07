@@ -3,6 +3,6 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterMovement
     {
-        private InputCharacter _input;
+       // private InputCharacter _input;
     }
 }

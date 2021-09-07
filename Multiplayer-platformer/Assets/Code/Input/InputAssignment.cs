@@ -3,27 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UndefinedBehaviour
+namespace UndefinedBehaviour.Input
 {
     public class InputAssignment
     {
-        public InputButtons Right { get; set; }
-        public InputButtons Left { get; set; }
+        public InputAxis HorizontalAxis { get; set; }
         public InputButtons Jump { get; set; }
         
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
-           
+           ChangeAssignment(HorizontalAxis, 1, gamePad.LeftStickXAxis);
         }
 
         public void AssignDefaultKeyboard()
         {
-                
+            ChangeAssignment(HorizontalAxis, 1, KeyCode.A, KeyCode.D);
+            ChangeAssignment(HorizontalAxis, 1, KeyCode.LeftArrow, KeyCode.RightArrow);
+            ChangeAssignment(Jump, 1, KeyCode.Space);
         }
 
         public void AssignDefault()
         {
-            
+            HorizontalAxis = new InputAxis(new []{KeyCode.A, KeyCode.D, KeyCode.LeftArrow, KeyCode.RightArrow});
+            Jump = new InputButtons(KeyCode.Space, KeyCode.W);
         }
         
         public void ChangeAssignment(InputButtons change, int slot, KeyCode key)
@@ -31,6 +33,14 @@ namespace UndefinedBehaviour
             
         }
         public void ChangeAssignment(InputButtons change, int slot, string button)
+        {
+            
+        }
+        public void ChangeAssignment(InputAxis change, int slot, KeyCode key1, KeyCode key2)
+        {
+            
+        }
+        public void ChangeAssignment(InputAxis change, int slot, string button)
         {
             
         }

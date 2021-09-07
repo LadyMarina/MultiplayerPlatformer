@@ -1,8 +1,8 @@
-﻿namespace UndefinedBehaviour
+﻿namespace UndefinedBehaviour.Input
 {
     public interface IGamePad
     {
-        string Trigger { get; }
-        string RightStickXAxis { get; }
+        public string AButton { get; }
+        public string LeftStickXAxis { get; }
     }
 }
