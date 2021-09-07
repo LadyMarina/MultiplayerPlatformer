@@ -8,6 +8,9 @@ namespace UndefinedBehaviour.Input
         
         private KeyCode[] _keys = new KeyCode[MAX_SLOTS * 2];
         private string[] _buttons = new string[MAX_SLOTS];
+
+
+        private float _lastInput = 0.0f;
         
         /// <summary>
         /// Limited to MAX_SLOTS * 2 value.
@@ -45,21 +48,48 @@ namespace UndefinedBehaviour.Input
         /// <returns></returns>
         public float GetAxisRaw()
         {
-            for (int i = 0; i < _keys.Length; i = i+2)
+            if (_lastInput > 0.5f)
             {
-                if (UnityEngine.Input.GetKey(_keys[i]))
+                for (int i = 0; i < _keys.Length; i = i+2)
                 {
-                    return -1.0f;
+                    if (UnityEngine.Input.GetKey(_keys[i]))
+                    {
+                        _lastInput = -1.0f;
+                        return _lastInput;
+                    }
+                }
+                for (int i = 1; i < _keys.Length; i = i+2)
+                {
+                    if (UnityEngine.Input.GetKey(_keys[i]))
+                    {
+                        _lastInput = 1.0f;
+                        return 1.0f;
+                    }
                 }
             }
-            for (int i = 1; i < _keys.Length; i = i+2)
+            else
             {
-                if (UnityEngine.Input.GetKey(_keys[i]))
+                for (int i = 1; i < _keys.Length; i = i+2)
                 {
-                    return 1.0f;
+                    if (UnityEngine.Input.GetKey(_keys[i]))
+                    {
+                        _lastInput = 1.0f;
+                        return 1.0f;
+                    }
                 }
-            }
 
+                for (int i = 0; i < _keys.Length; i = i + 2)
+                {
+                    if (UnityEngine.Input.GetKey(_keys[i]))
+                    {
+                        _lastInput = -1.0f;
+                        return _lastInput;
+                    }
+                }
+            }
+            
+
+            _lastInput = 0.0f;
             return 0;
         }
         
