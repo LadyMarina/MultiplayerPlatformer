@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace UndefinedBehaviour.Input
 {
-    [Serializable]
     public class InputAssignment
     {
         private IGamePad _currentGamePad;
@@ -14,12 +13,10 @@ namespace UndefinedBehaviour.Input
 
         public InputAxis HorizontalAxis { get; set; }
         public InputButtons Jump { get; set; }
-
-
-        [Serializable]
+        
         public enum Assignements
         {
-            Jump, HorizontalAxis
+            HorizontalAxis, Jump
         }
 
         public InputAssignment()
@@ -37,13 +34,18 @@ namespace UndefinedBehaviour.Input
 
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
-            ChangeAssignment(Assignements.Jump, 0, gamePad.AButton);
             ChangeAssignment(Assignements.HorizontalAxis, 0, gamePad.LeftStickXAxis);
+            ChangeAssignment(Assignements.Jump, 0, gamePad.AButton);
         }
 
         public void AssignDefaultKeyboard()
         {
+            ChangeAssignment(Assignements.HorizontalAxis, 0, KeyCode.A);
+            ChangeAssignment(Assignements.HorizontalAxis, 1, KeyCode.D);
+            ChangeAssignment(Assignements.HorizontalAxis, 2, KeyCode.LeftAlt);
+            ChangeAssignment(Assignements.HorizontalAxis, 3, KeyCode.RightArrow);
             ChangeAssignment(Assignements.Jump, 0, KeyCode.Space);
+            ChangeAssignment(Assignements.Jump, 0, KeyCode.W);
         }
 
         public void AssignDefault()
