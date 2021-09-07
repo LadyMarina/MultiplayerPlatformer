@@ -6,16 +6,18 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterAnimator : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        private Animator _characterAnimatorController;
+        private void Start()
         {
-        
+            _characterAnimatorController = GetComponent<Animator>();
         }
-
-        // Update is called once per frame
-        void Update()
+        public void Jump()
         {
-        
+
+        }
+        public void Move(float speed)
+        {
+
         }
     }
 }
