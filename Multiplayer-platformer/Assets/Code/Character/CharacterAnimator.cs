@@ -15,7 +15,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         {
 
         }
-        public void Move(float speed)
+        public void Move(float axis,float speed)
         {
 
         }

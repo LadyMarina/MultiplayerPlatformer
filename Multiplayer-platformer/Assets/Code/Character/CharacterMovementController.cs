@@ -29,7 +29,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            GetComponent<Rigidbody2D>().
+           // GetComponent<Rigidbody2D>().
         }
     }
 }
