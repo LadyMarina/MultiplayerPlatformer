@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 909759155}
   - component: {fileID: 909759154}
   - component: {fileID: 909759153}
+  - component: {fileID: 909759156}
   m_Layer: 5
   m_Name: ChangeJumpButton
   m_TagString: Untagged
@@ -837,7 +838,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 909759154}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 909759156}
+        m_TargetAssemblyTypeName: UndefinedBehaviour.MultiplayerPlatformer.AssignementHelper,
+          Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &909759154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,6 +890,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909759151}
   m_CullTransparentMesh: 1
+--- !u!114 &909759156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909759151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40bd55e2f2864e4db77fcd7b215c520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _assignement: 1
+  testChangeKey: {fileID: 169512994}
 --- !u!1 &1032052980
 GameObject:
   m_ObjectHideFlags: 0
