@@ -52,43 +52,15 @@ namespace UndefinedBehaviour.Input
         {
             _keys[slot] = key;
         }
-    }
-    
-    public class InputAxis
-    {
-        private const int MAX_SLOTS = 2;
         
-        private KeyCode[] _keys = new KeyCode[MAX_SLOTS * 2];
-        private string[] _buttons = new string[MAX_SLOTS];
-        
-        /// <summary>
-        /// Limited to MAX_SLOTS * 2 value.
-        /// </summary>
-        /// <param name="keys"></param>
-        public InputAxis(KeyCode[] keys)
+        public string Button(int slot)
         {
-            for (int i = 0; i < MAX_SLOTS * 2; i++)
-            {
-                _keys[i] = keys[i];
-            }
+            return _buttons[slot];
         }
 
-        /// <summary>
-        /// Limited to MAX_SLOTS * 2 value for keys, and MAX_SLOTS for buttons
-        /// </summary>
-        /// <param name="keys"></param>
-        /// <param name="buttons"></param>
-        public InputAxis(KeyCode[] keys, string[] buttons)
+        public void SetButton(int slot, string button)
         {
-            for (int i = 0; i < MAX_SLOTS * 2; i++)
-            {
-                _keys[i] = keys[i];
-            }
-            
-            for (int i = 0; i < MAX_SLOTS; i++)
-            {
-                _buttons[i] = buttons[i];
-            }
+            _buttons[slot] = button;
         }
     }
 }

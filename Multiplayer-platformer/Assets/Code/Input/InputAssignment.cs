@@ -8,35 +8,42 @@ namespace UndefinedBehaviour.Input
     [Serializable]
     public class InputAssignment
     {
+        private IGamePad _currentGamePad;
+        private Dictionary<Assignements, InputButtons> _inputButtonNames;
+        private Dictionary<Assignements, InputAxis> _inputAxisNames;
+
         public InputAxis HorizontalAxis { get; set; }
         public InputButtons Jump { get; set; }
 
-        private Dictionary<Assignements, InputButtons> _inputButtonNames;
 
         [Serializable]
         public enum Assignements
         {
-            Jump, Attack
+            Jump, HorizontalAxis
         }
 
         public InputAssignment()
         {
-            _inputButtonNames = new Dictionary<Assignements, InputButtons>();
             AssignDefault();
-            _inputButtonNames.Add(Assignements.Jump, Jump);
-            
+            _inputButtonNames = new Dictionary<Assignements, InputButtons>
+            {
+                { Assignements.Jump, Jump }
+            };
+            _inputAxisNames = new Dictionary<Assignements, InputAxis>
+            {
+                { Assignements.HorizontalAxis, HorizontalAxis }
+            };
         }
 
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
-          // ChangeAssignment(HorizontalAxis, 1, gamePad.LeftStickXAxis);
+            ChangeAssignment(Assignements.Jump, 0, gamePad.AButton);
+            ChangeAssignment(Assignements.HorizontalAxis, 0, gamePad.LeftStickXAxis);
         }
 
         public void AssignDefaultKeyboard()
         {
-            //ChangeAssignment(HorizontalAxis, 1, KeyCode.A, KeyCode.D);
-            //ChangeAssignment(HorizontalAxis, 1, KeyCode.LeftArrow, KeyCode.RightArrow);
-            ChangeAssignment(Assignements.Jump, 1, KeyCode.Space);
+            ChangeAssignment(Assignements.Jump, 0, KeyCode.Space);
         }
 
         public void AssignDefault()
@@ -47,18 +54,24 @@ namespace UndefinedBehaviour.Input
         
         public void ChangeAssignment(Assignements change, int slot, KeyCode key)
         {
-            Debug.Log(Jump);
-            Debug.Log(_inputButtonNames[change]);
             _inputButtonNames[change].SetKey(slot, key);
         }
         public void ChangeAssignment(Assignements change, int slot, string button)
         {
+            if (_inputButtonNames.ContainsKey(change))
+            {
+                _inputButtonNames[change].SetButton(slot, button);
+            }
+            else if(_inputAxisNames.ContainsKey(change))
+            {
+                _inputAxisNames[change].SetButton(slot, button);
+            }
+            else
+            {
+                Debug.Log("Input assignement don't exist.");
+            }
             
         }
-        
-       
-
-     
     }
 
 
