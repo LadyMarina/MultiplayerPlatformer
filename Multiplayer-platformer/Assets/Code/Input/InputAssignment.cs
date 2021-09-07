@@ -5,22 +5,38 @@ using UnityEngine;
 
 namespace UndefinedBehaviour.Input
 {
+    [Serializable]
     public class InputAssignment
     {
         public InputAxis HorizontalAxis { get; set; }
         public InputButtons Jump { get; set; }
-        private Dictionary<string, InputButtons> _inputButtonNames;
-        
+
+        private Dictionary<Assignements, InputButtons> _inputButtonNames;
+
+        [Serializable]
+        public enum Assignements
+        {
+            Jump, Attack
+        }
+
+        public InputAssignment()
+        {
+            _inputButtonNames = new Dictionary<Assignements, InputButtons>();
+            AssignDefault();
+            _inputButtonNames.Add(Assignements.Jump, Jump);
+            
+        }
+
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
-           ChangeAssignment(HorizontalAxis, 1, gamePad.LeftStickXAxis);
+          // ChangeAssignment(HorizontalAxis, 1, gamePad.LeftStickXAxis);
         }
 
         public void AssignDefaultKeyboard()
         {
-            ChangeAssignment(HorizontalAxis, 1, KeyCode.A, KeyCode.D);
-            ChangeAssignment(HorizontalAxis, 1, KeyCode.LeftArrow, KeyCode.RightArrow);
-            ChangeAssignment(Jump, 1, KeyCode.Space);
+            //ChangeAssignment(HorizontalAxis, 1, KeyCode.A, KeyCode.D);
+            //ChangeAssignment(HorizontalAxis, 1, KeyCode.LeftArrow, KeyCode.RightArrow);
+            ChangeAssignment(Assignements.Jump, 1, KeyCode.Space);
         }
 
         public void AssignDefault()
@@ -29,20 +45,18 @@ namespace UndefinedBehaviour.Input
             Jump = new InputButtons(KeyCode.Space, KeyCode.W);
         }
         
-        public void ChangeAssignment(string change, int slot, KeyCode key)
+        public void ChangeAssignment(Assignements change, int slot, KeyCode key)
         {
-            
+            Debug.Log(Jump);
+            Debug.Log(_inputButtonNames[change]);
+            _inputButtonNames[change].SetKey(slot, key);
         }
-        public void ChangeAssignment(string change, int slot, string button)
+        public void ChangeAssignment(Assignements change, int slot, string button)
         {
             
         }
         
-        public InputAssignment()
-        {
-            _inputButtonNames = new Dictionary<string, InputButtons>();
-            _inputButtonNames.Add("Jump", Jump);
-        }
+       
 
      
     }

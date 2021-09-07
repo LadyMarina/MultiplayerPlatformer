@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UndefinedBehaviour.Input;
 
 namespace UndefinedBehaviour.MultiplayerPlatformer
 {
@@ -11,7 +12,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private InputAssignment _inputAssignment;
         private bool _isAssigning;
 
-        private string keyToAssing;
+        private InputAssignment.Assignements _assingKey;
 
         private void Awake()
         {
@@ -19,9 +20,9 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         }
 
-        public void ChangeInput(string inputToChange)
+        public void ChangeInput(InputAssignment.Assignements inputToChange)
         {
-            keyToAssing = inputToChange;
+            _assingKey = inputToChange;
             _isAssigning = true;
         }
 
@@ -31,11 +32,11 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             {
                 foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKey(key))
+                    if (UnityEngine.Input.GetKey(key))
                     {
                         _isAssigning = false;
-                        _inputAssignment.ChangeAssignment(keyToAssing, 0, key);
-                        
+                        _inputAssignment.ChangeAssignment(_assingKey, 0, key);
+
                     }
                 }
             }

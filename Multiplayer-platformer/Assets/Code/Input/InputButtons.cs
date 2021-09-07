@@ -42,6 +42,16 @@ namespace UndefinedBehaviour.Input
 
             return false;
         }
+
+        public KeyCode GetKey(int slot)
+        {
+            return _keys[slot];
+        }
+
+        public void SetKey(int slot, KeyCode key)
+        {
+            _keys[slot] = key;
+        }
     }
     
     public class InputAxis
