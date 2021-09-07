@@ -14,12 +14,16 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private CharacterAnimator _characterAnimator;
 
         [SerializeField] private float _speed = 5f;
-        
+
+        private Rigidbody2D _rigidbody2D;
 
         private void Awake()
         {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            
             _characterInput = new CharacterInput();
-            _characterMovement = new CharacterMovement(GetComponent<Rigidbody2D>(), _speed);
+            _characterMovement = new CharacterMovement(_rigidbody2D, _speed);
+            _characterAnimator = new CharacterAnimator(GetComponent<Animator>());
         }
 
         private void FixedUpdate()
@@ -29,7 +33,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            GetComponent<Rigidbody2D>().
+            //GetComponent<Rigidbody2D>().
         }
     }
 }

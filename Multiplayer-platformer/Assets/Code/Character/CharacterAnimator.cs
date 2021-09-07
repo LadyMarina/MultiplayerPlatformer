@@ -6,6 +6,9 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterAnimator : MonoBehaviour
     {
-        
+        public CharacterAnimator(Animator animator)
+        {
+            
+        }
     }
 }
