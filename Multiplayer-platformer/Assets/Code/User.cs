@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UndefinedBehaviour.MultiplayerPlatformer
@@ -6,9 +7,14 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
     {
         public enum Type
         {
-            Character, Controller
+            Character, God
         }
 
-        public Type type;
+        private Type _type;
+
+        public bool IsUserType(Type type)
+        {
+            return type == _type;
+        }
     }   
 }
