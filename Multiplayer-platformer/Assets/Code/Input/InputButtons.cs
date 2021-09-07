@@ -22,7 +22,27 @@ namespace UndefinedBehaviour.Input
             _buttons[1] = button2;
         }
 
-        public bool GetKeyDown()
+        public bool GetAction()
+        {
+            foreach (var key in _keys)
+            {
+                if (UnityEngine.Input.GetKey(key))
+                {
+                    return true;
+                }
+            }
+            
+            foreach (var button in _buttons)
+            {
+                if (UnityEngine.Input.GetButton(button))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public bool GetActionDown()
         {
             foreach (var key in _keys)
             {
@@ -34,7 +54,31 @@ namespace UndefinedBehaviour.Input
             
             foreach (var button in _buttons)
             {
+                if (button == "")
+                    continue;
                 if (UnityEngine.Input.GetButtonDown(button))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public bool GetActionUp()
+        {
+            foreach (var key in _keys)
+            {
+                if (UnityEngine.Input.GetKeyUp(key))
+                {
+                    return true;
+                }
+            }
+            
+            foreach (var button in _buttons)
+            {
+                if (button == "")
+                    continue;
+                if (UnityEngine.Input.GetButtonUp(button))
                 {
                     return true;
                 }
@@ -53,7 +97,7 @@ namespace UndefinedBehaviour.Input
             _keys[slot] = key;
         }
         
-        public string Button(int slot)
+        public string GetButton(int slot)
         {
             return _buttons[slot];
         }
