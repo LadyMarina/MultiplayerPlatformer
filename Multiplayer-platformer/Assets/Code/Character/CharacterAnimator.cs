@@ -8,7 +8,20 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
     {
         public CharacterAnimator(Animator animator)
         {
-            
+           
+		}		   
+        private Animator _characterAnimatorController;
+        private void Start()
+        {
+            _characterAnimatorController = GetComponent<Animator>();
+        }
+        public void Jump()
+        {
+
+        }
+        public void Move(float speed)
+        {
+
         }
     }
 }
