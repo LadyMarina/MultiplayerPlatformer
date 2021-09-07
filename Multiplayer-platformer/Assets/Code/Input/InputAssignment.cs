@@ -10,6 +10,7 @@ namespace UndefinedBehaviour
         public InputButtons Right { get; set; }
         public InputButtons Left { get; set; }
         public InputButtons Jump { get; set; }
+        private Dictionary<string, InputButtons> _inputButtonNames;
         
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
@@ -26,14 +27,22 @@ namespace UndefinedBehaviour
             
         }
         
-        public void ChangeAssignment(InputButtons change, int slot, KeyCode key)
+        public void ChangeAssignment(string change, int slot, KeyCode key)
         {
             
         }
-        public void ChangeAssignment(InputButtons change, int slot, string button)
+        public void ChangeAssignment(string change, int slot, string button)
         {
             
         }
+        
+
+        public InputAssignment()
+        {
+            _inputButtonNames = new Dictionary<string, InputButtons>();
+            _inputButtonNames.Add("Jump", Jump);
+        }
+
     }
 
 
