@@ -38,6 +38,30 @@ namespace UndefinedBehaviour.Input
                 _buttons[i] = buttons[i];
             }
         }
+
+        /// <summary>
+        /// -1 0 1
+        /// </summary>
+        /// <returns></returns>
+        public float GetAxisRaw()
+        {
+            for (int i = 0; i < _keys.Length; i = i+2)
+            {
+                if (UnityEngine.Input.GetKey(_keys[i]))
+                {
+                    return -1.0f;
+                }
+            }
+            for (int i = 1; i < _keys.Length; i = i+2)
+            {
+                if (UnityEngine.Input.GetKey(_keys[i]))
+                {
+                    return 1.0f;
+                }
+            }
+
+            return 0;
+        }
         
         public KeyCode GetKey(int slot)
         {
