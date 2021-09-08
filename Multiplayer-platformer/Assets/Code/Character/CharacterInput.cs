@@ -13,6 +13,11 @@
         {
             return _inputAssignment.HorizontalAxis.GetAxisRaw();
         }
+
+        public bool GetJumpActionDown()
+        {
+            return _inputAssignment.Jump.GetActionDown();
+        }
         /*
         private UndefinedBehaviour.MultiplayerPlatformer.InputAssignment _input;
         public float GetVerticalAxis()

@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244684634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2808533, y: -2.6179137, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -343,7 +343,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621fd36885d783748b2abe9d309c04ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 200
+  _jumpForce: 5
+  Grounded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1293170690
 Rigidbody2D:
   serializedVersion: 4
@@ -424,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293170688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2808533, y: -2.6179137, z: 0}
+  m_LocalPosition: {x: 2.7, y: 2.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -468,7 +472,7 @@ GameObject:
   - component: {fileID: 1605358604}
   - component: {fileID: 1605358606}
   m_Layer: 0
-  m_Name: t
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605358603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1291, y: -4.63, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 22.784872, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
