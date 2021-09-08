@@ -4,22 +4,19 @@ using UnityEngine;
 
 namespace UndefinedBehaviour.MultiplayerPlatformer
 {
-    public class CharacterAnimator : MonoBehaviour
+    public class CharacterAnimator
     {
+        private Animator _animator;
         public CharacterAnimator(Animator animator)
         {
-           
+            _animator = animator;
 		}		   
-        private Animator _characterAnimatorController;
-        private void Start()
-        {
-            _characterAnimatorController = GetComponent<Animator>();
-        }
+
         public void Jump()
         {
-
+            _animator.SetBool("isJumping",true);
         }
-        public void Move(float axis,float speed)
+        public void Move(float axis, float speed)
         {
 
         }
