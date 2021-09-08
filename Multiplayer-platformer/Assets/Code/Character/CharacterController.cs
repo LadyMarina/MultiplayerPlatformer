@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,15 +8,15 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterController : NetworkBehaviour
     {
-
-        void Start()
+        private void Awake()
         {
-        
+            GetComponent<CameraController>().user = new User(User.Type.Character);
         }
 
-        void Update()
+        private void Update()
         {
-        
+            if (!isLocalPlayer) return;
+            
         }
     }
 }

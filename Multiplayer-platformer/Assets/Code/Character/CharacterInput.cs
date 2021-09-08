@@ -1,4 +1,6 @@
-﻿namespace UndefinedBehaviour.Input
+﻿using UndefinedBehaviour.Input;
+
+namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterInput
     {
@@ -18,20 +20,5 @@
         {
             return _inputAssignment.Jump.GetActionDown();
         }
-        /*
-        private UndefinedBehaviour.MultiplayerPlatformer.InputAssignment _input;
-        public float GetVerticalAxis()
-        {
-            if (_input.Right.GetKeyDown())
-            {
-                return 1;
-            }
-            else if (UnityEngine.Input.GetKeyDown(_input.Left.GetKeyDown()))
-            {
-                return -1;
-            }
-
-            return 0;
-        }*/
     }
 }

@@ -5,15 +5,10 @@ using UnityEngine;
 namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class CharacterCamera : ICameraController
-    { 
-        void Start()
+    {
+        public void UpdatePosition(Camera camera, float speed, float deltaTime)
         {
-        
-        }
-
-        void Update()
-        {
-        
+            camera.transform.position += (Vector3)Vector2.right * speed * deltaTime;
         }
     }
 }

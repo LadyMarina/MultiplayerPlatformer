@@ -10,26 +10,27 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
     [RequireComponent(typeof(Rigidbody2D))]
     public class CharacterMovementController : MonoBehaviour
     {
+        [SerializeField] private float _speed = 5f;
+        [SerializeField] private float _jumpForce = 5f;
+        [SerializeField, Range(-1.0f, 0.0f)] private float _detectGroundRange = -0.9f;
+        [Space]
+        [SerializeField] private UnityEvent Grounded;
+        
+        private Rigidbody2D _rigidbody2D;
         private CharacterInput _characterInput;
         private CharacterMovement _characterMovement;
         private CharacterAnimator _characterAnimator;
-
-        [SerializeField] private float _speed = 5f;
-        [SerializeField] private float _jumpForce = 5f;
-
-        private Rigidbody2D _rigidbody2D;
-
-        [SerializeField] private UnityEvent Grounded;
-
+        
         private bool _isOnGround = false;
-
+        
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             
             _characterInput = new CharacterInput();
             _characterMovement = new CharacterMovement(_rigidbody2D, _speed, _jumpForce);
-            _characterAnimator = new CharacterAnimator(GetComponent<Animator>());
+            Animator myAnimator = GetComponent<Animator>();
+            _characterAnimator = new CharacterAnimator(myAnimator);
             
             Grounded.AddListener(OnGrounded);
         }
@@ -61,8 +62,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
             foreach (var contact in contacts)
             {
-                Debug.Log(contact.normal + " " + Vector2.Dot(contact.normal, Vector2.down));
-                if (Vector2.Dot(contact.normal, Vector2.down) < -0.9f)
+                if (Vector2.Dot(contact.normal, Vector2.down) < _detectGroundRange)
                 {
                     Grounded.Invoke();
                 }

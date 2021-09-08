@@ -1,4 +1,4 @@
-﻿namespace UndefinedBehaviour.Input
+﻿namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class InputGod
     {
