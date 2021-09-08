@@ -34,8 +34,8 @@ namespace UndefinedBehaviour.Input
 
         public void AssignDefaultGamepad(IGamePad gamePad)
         {
-            ChangeAssignment(Assignements.HorizontalAxis, 0, gamePad.LeftStickXAxis);
-            ChangeAssignment(Assignements.Jump, 0, gamePad.AButton);
+        //    ChangeAssignment(Assignements.HorizontalAxis, 0, gamePad.LeftStickXAxis);
+        //    ChangeAssignment(Assignements.Jump, 0, gamePad.AButton);
         }
 
         public void AssignDefaultKeyboard()
