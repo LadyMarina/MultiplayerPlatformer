@@ -16,7 +16,6 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private void Update()
         {
             if (!isLocalPlayer) return;
-            
         }
     }
 }

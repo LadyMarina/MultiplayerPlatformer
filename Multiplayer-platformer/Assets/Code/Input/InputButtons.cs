@@ -32,13 +32,13 @@ namespace UndefinedBehaviour.Input
                 }
             }
             
-            foreach (var button in _buttons)
+            /*foreach (var button in _buttons)
             {
                 if (UnityEngine.Input.GetButton(button))
                 {
                     return true;
                 }
-            }
+            }*/
 
             return false;
         }
@@ -52,7 +52,7 @@ namespace UndefinedBehaviour.Input
                 }
             }
             
-            foreach (var button in _buttons)
+            /*foreach (var button in _buttons)
             {
                 if (button == "")
                     continue;
@@ -60,7 +60,7 @@ namespace UndefinedBehaviour.Input
                 {
                     return true;
                 }
-            }
+            }*/
 
             return false;
         }
@@ -74,7 +74,7 @@ namespace UndefinedBehaviour.Input
                 }
             }
             
-            foreach (var button in _buttons)
+      /*      foreach (var button in _buttons)
             {
                 if (button == "")
                     continue;
@@ -83,7 +83,7 @@ namespace UndefinedBehaviour.Input
                     return true;
                 }
             }
-
+/*/
             return false;
         }
 
