@@ -38,6 +38,8 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private void Update()
         {
             _characterMovement.Jump(ref _isOnGround, _characterInput.GetJumpActionDown());
+            _characterAnimator.SetXAxis(_characterInput.GetHorizontalAxis());
+            print(_characterInput.GetHorizontalAxis());
         }
 
         private void FixedUpdate()

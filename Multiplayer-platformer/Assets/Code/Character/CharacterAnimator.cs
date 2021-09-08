@@ -12,13 +12,19 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             _animator = animator;
 		}		   
 
-        public void Jump()
+        public void Jump(bool isJumping)
         {
-            _animator.SetBool("isJumping",true);
+            _animator.SetBool("isJumping", isJumping);
         }
-        public void Move(float axis, float speed)
-        {
 
+        public void Falling(bool isFalling)
+        {
+            _animator.SetBool("isFalling", isFalling);
+        }
+        
+        public void SetXAxis(float axis)
+        {
+            _animator.SetFloat("XAxis", axis);
         }
     }
 }
