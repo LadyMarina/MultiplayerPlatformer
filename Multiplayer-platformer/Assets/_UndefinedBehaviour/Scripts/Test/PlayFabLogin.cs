@@ -1,34 +1,38 @@
+using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 
-namespace UndefinedBehaviour.MultiplayerPlatformer
+namespace UndefinedBehaviour.MultiplayerPlatformer.PlayFab
 {
     public class PlayFabLogin : MonoBehaviour
     {
-        public void Start()
+        public void Awake()
         {
-            if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId)){
-                /*
-                Please change the titleId below to your own titleId from PlayFab Game Manager.
-                If you have already set the value in the Editor Extensions, this can be skipped.
-                */
-                PlayFabSettings.staticSettings.TitleId = "42";
-            }
-            var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true};
+           LogIn();
+           Application.quitting += SavePlayFabData;
+        }
+
+        public static void LogIn()
+        {
+            var request = new LoginWithCustomIDRequest { CustomId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true};
             PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
         }
         
-        private void OnLoginSuccess(LoginResult result)
+        private static void OnLoginSuccess(LoginResult result)
         {
-            Debug.Log("Congratulations, you made your first successful API call!");
+            Debug.Log("Login successful");
         }
         
-        private void OnLoginFailure(PlayFabError error)
+        private static void OnLoginFailure(PlayFabError error)
         {
-            Debug.LogWarning("Something went wrong with your first API call.  :(");
-            Debug.LogError("Here's some debug information:");
+            Debug.LogError("Login error.");
             Debug.LogError(error.GenerateErrorReport());
+        }
+
+        private void SavePlayFabData()
+        {
+            LeaderBoardManager.SendToLeaderboard("TimePlayed", Mathf.RoundToInt(Time.realtimeSinceStartup));
         }
     }
 }

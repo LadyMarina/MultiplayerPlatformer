@@ -16,7 +16,5 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         {
             _networkManager.StartClient();
         }
-        
-        
     }
 }
