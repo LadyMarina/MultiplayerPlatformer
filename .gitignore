@@ -69,4 +69,5 @@ Multiplayer-platformer/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 # Temporary auto-generated Android Assets
 Multiplayer-platformer/[Aa]ssets/[Ss]treamingAssets/aa.meta
 Multiplayer-platformer/[Aa]ssets/[Ss]treamingAssets/aa/*
-
+Multiplayer-platformer/Assets/PlayFabEditorExtensions/Editor/Resources/PlayFabEditorPrefsSO.asset
+Multiplayer-platformer/Assets/PlayFabSDK/Shared/Public/Resources/PlayFabSharedSettings.asset
