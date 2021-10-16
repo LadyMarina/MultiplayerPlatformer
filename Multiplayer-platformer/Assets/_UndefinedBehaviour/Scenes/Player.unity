@@ -246,10 +246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6336688460858792352, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6336688460858792353, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
       propertyPath: sceneId
       value: 1311307928
@@ -298,6 +294,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6336688460858792355, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336688460858792355, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.0666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336688460858792357, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336688460858792357, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6367560908665664636, guid: 23066fd61c250cc458c5883de1254118, type: 3}
     - target: {fileID: 6336688460858792358, guid: 4e6407eda1964f84a984c6a3ca384f8f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -561,7 +573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1769851737
 MonoBehaviour:
   m_ObjectHideFlags: 0
