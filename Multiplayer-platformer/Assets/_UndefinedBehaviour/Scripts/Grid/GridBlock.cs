@@ -15,10 +15,11 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private GridSystem _gridSystem;
         private Tilemap _tilemap;
         private Tilemap _checkTilemap;
-        private Tile _checkTileSprite;
+        private Tile _CorrectCheckTileSprite;
+        private Tile _WrongCheckTileSprite;
 
-        private TileBase _tilemapPlaceIndex;
-        private TileBase _tilemapNewPlaceIndex;
+        private Vector3 _tilemapPlaceIndex;
+        private Vector3 _tilemapNewPlaceIndex;
 
         private int indexMinCorner;
         private void Start()
@@ -28,7 +29,8 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             _gridSystem = FindObjectOfType<GridSystem>();
             _tilemap = _gridSystem.GetTileMap();
             _checkTilemap = _gridSystem.GetCheckTileMap();
-            _checkTileSprite = _gridSystem.GetCheckTileSprite();
+            _CorrectCheckTileSprite = _gridSystem.GetCorrectCheckTileSprite();
+            _WrongCheckTileSprite = _gridSystem.GetWrongCheckTileSprite();
             _distanceBetweenCorners = new float[4];
         }
         private void Update()
@@ -39,27 +41,33 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
                     
             for (int i = 0; i < _spriteCorners.Length; i++)
             {
-                _distanceBetweenCorners[i] = Vector3.Distance(_spriteCenter, _tilemap.GetCellCenterWorld(Vector3Int.RoundToInt(CorrectPivot(i, _spriteCorners))));
+                _distanceBetweenCorners[i] = Vector3.Distance(_spriteCenter, _tilemap.GetCellCenterWorld(Vector3Int.RoundToInt(GetTilePosition(i, _spriteCorners))));
             }
               
             float minDistance = Mathf.Min(_distanceBetweenCorners);
             int index = System.Array.IndexOf(_distanceBetweenCorners, minDistance);
 
-            _tilemapPlaceIndex = _tilemap.GetTile(Vector3Int.RoundToInt(CorrectPivot(index, _spriteCorners)));
-            print("Old Tile Map" + _tilemapPlaceIndex + "New Tile Map " + _tilemapNewPlaceIndex);
+            _tilemapPlaceIndex = GetTilePosition(index, _spriteCorners);
 
             if (_tilemapPlaceIndex != _tilemapNewPlaceIndex)
             {
                 _tilemapNewPlaceIndex = _tilemapPlaceIndex;
                 _checkTilemap.ClearAllTiles();
             }
-            _checkTilemap.SetTile(Vector3Int.RoundToInt(CorrectPivot(index, _spriteCorners)), _checkTileSprite);
-            
 
+            if (_tilemap.HasTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners))))
+            {
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners)), _WrongCheckTileSprite);
+            }
+            else
+            {
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners)), _CorrectCheckTileSprite);
+                
+            }
 
         }
 
-        public static Vector3 CorrectPivot(int index, Vector3[] spriteCorners)
+        public static Vector3 GetTilePosition(int index, Vector3[] spriteCorners)
         {
             Vector3 vector3 = new Vector3(spriteCorners[index].x - 0.5f, spriteCorners[index].y - 0.5f, 0);
             vector3 = Vector3Int.RoundToInt(vector3);
