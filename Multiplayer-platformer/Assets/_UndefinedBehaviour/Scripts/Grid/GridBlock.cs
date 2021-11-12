@@ -8,24 +8,30 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class GridBlock : MonoBehaviour
     {
+        [Header("SPRITES & GRIDS")]
+        [SerializeField] private Tile _BlockTileSprite;
         private SpriteRenderer _sprite;
-        private Vector3[] _spriteCorners;
-        private Vector3 _spriteCenter;
-        private float[] _distanceBetweenCorners;
         private GridSystem _gridSystem;
         private Tilemap _tilemap;
         private Tilemap _checkTilemap;
         private Tile _CorrectCheckTileSprite;
         private Tile _WrongCheckTileSprite;
 
+        [Header("POSITION SPRITES & CORNERS")]
+        private Vector3[] _spriteCorners;
+        private Vector3 _spriteCenter;
         private Vector3 _tilemapPlaceIndex;
         private Vector3 _tilemapNewPlaceIndex;
+        private float[] _distanceBetweenCorners;
+
+        [Header("EXTRAS")]
+        private bool _ItCanBePlace;
+        private int _index;
 
         private int indexMinCorner;
         private void Start()
         {
             _sprite = GetComponent<SpriteRenderer>();
-            
             _gridSystem = FindObjectOfType<GridSystem>();
             _tilemap = _gridSystem.GetTileMap();
             _checkTilemap = _gridSystem.GetCheckTileMap();
@@ -45,9 +51,9 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             }
               
             float minDistance = Mathf.Min(_distanceBetweenCorners);
-            int index = System.Array.IndexOf(_distanceBetweenCorners, minDistance);
+            _index = System.Array.IndexOf(_distanceBetweenCorners, minDistance);
 
-            _tilemapPlaceIndex = GetTilePosition(index, _spriteCorners);
+            _tilemapPlaceIndex = GetTilePosition(_index, _spriteCorners);
 
             if (_tilemapPlaceIndex != _tilemapNewPlaceIndex)
             {
@@ -55,16 +61,16 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
                 _checkTilemap.ClearAllTiles();
             }
 
-            if (_tilemap.HasTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners))))
+            if (_tilemap.HasTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners))))
             {
-                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners)), _WrongCheckTileSprite);
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _WrongCheckTileSprite);
+                _ItCanBePlace = false;
             }
             else
             {
-                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(index, _spriteCorners)), _CorrectCheckTileSprite);
-                
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _CorrectCheckTileSprite);
+                _ItCanBePlace = true;
             }
-
         }
 
         public static Vector3 GetTilePosition(int index, Vector3[] spriteCorners)
@@ -87,6 +93,18 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         {
             Vector3 center = renderer.transform.TransformPoint(renderer.sprite.bounds.center);
             return center;
+        }
+
+        public void PlaceBlock()
+        {
+            if (_ItCanBePlace)
+            {
+                _tilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _BlockTileSprite);
+            }
+            else
+            {
+                Debug.Log("RETURN");
+            }
         }
 
     }

@@ -18,15 +18,11 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             {
                 Destroy(gameObject);
             }
-           
-           
-
         }
 
         private void Update()
         {
-
-            if (_isDragActive && (UnityEngine.Input.GetMouseButtonDown(0) ||( UnityEngine.Input.touchCount == 1 && UnityEngine.Input.GetTouch(0).phase == TouchPhase.Ended)))
+            if (_isDragActive && (UnityEngine.Input.GetMouseButtonUp(0) ||( UnityEngine.Input.touchCount == 1 && UnityEngine.Input.GetTouch(0).phase == TouchPhase.Ended)))
             {
                 Drop();
                 return;
@@ -59,10 +55,8 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
                     }
                 }
             }
-            
-
-
         }
+
         void InitDrag()
         {
             _isDragActive = true;
@@ -75,6 +69,7 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         void Drop()
         {
+            _lastGridBlock.PlaceBlock();
             _isDragActive = false;
         }
     }
