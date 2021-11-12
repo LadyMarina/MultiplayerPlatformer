@@ -10,8 +10,8 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
     {
         [SerializeField] private Tilemap _tileMap;
         [SerializeField] private Tilemap _checkTileMap;
-        [SerializeField] private Tile _CorrectCheckTileSprite;
-        [SerializeField] private Tile _WrongCheckTileSprite;
+        [SerializeField] private Tile _correctCheckTileSprite;
+        [SerializeField] private Tile _wrongCheckTileSprite;
         public Tilemap GetTileMap()
         {
             return _tileMap;
@@ -25,11 +25,11 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         public Tile GetCorrectCheckTileSprite()
         {
-            return _CorrectCheckTileSprite;
+            return _correctCheckTileSprite;
         }
         public Tile GetWrongCheckTileSprite()
         {
-            return _WrongCheckTileSprite;
+            return _wrongCheckTileSprite;
         }
         private void Update()
         {

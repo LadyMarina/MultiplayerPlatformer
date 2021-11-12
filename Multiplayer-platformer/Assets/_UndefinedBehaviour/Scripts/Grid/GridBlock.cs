@@ -9,13 +9,15 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
     public class GridBlock : MonoBehaviour
     {
         [Header("SPRITES & GRIDS")]
-        [SerializeField] private Tile _BlockTileSprite;
+        [SerializeField] private Tile _blockTileSprite;
         private SpriteRenderer _sprite;
         private GridSystem _gridSystem;
         private Tilemap _tilemap;
         private Tilemap _checkTilemap;
-        private Tile _CorrectCheckTileSprite;
-        private Tile _WrongCheckTileSprite;
+        private Tile _correctCheckTileSprite;
+        private Tile _wrongCheckTileSprite;
+        private GridInventory _gridInventory;
+        private BoxCollider2D _boxCollider2D;
 
         [Header("POSITION SPRITES & CORNERS")]
         private Vector3[] _spriteCorners;
@@ -25,19 +27,24 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
         private float[] _distanceBetweenCorners;
 
         [Header("EXTRAS")]
-        private bool _ItCanBePlace;
-        private int _index;
+        private bool _itCanBePlace;
+        private int _indexBetweenCorners;
+        private int _invetoryID;
 
         private int indexMinCorner;
         private void Start()
         {
             _sprite = GetComponent<SpriteRenderer>();
             _gridSystem = FindObjectOfType<GridSystem>();
+            _gridInventory = FindObjectOfType<GridInventory>();
             _tilemap = _gridSystem.GetTileMap();
             _checkTilemap = _gridSystem.GetCheckTileMap();
-            _CorrectCheckTileSprite = _gridSystem.GetCorrectCheckTileSprite();
-            _WrongCheckTileSprite = _gridSystem.GetWrongCheckTileSprite();
+            _correctCheckTileSprite = _gridSystem.GetCorrectCheckTileSprite();
+            _wrongCheckTileSprite = _gridSystem.GetWrongCheckTileSprite();
+            _boxCollider2D = GetComponent<BoxCollider2D>();
             _distanceBetweenCorners = new float[4];
+
+            _boxCollider2D.isTrigger = true;
         }
         private void Update()
         {
@@ -51,9 +58,9 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             }
               
             float minDistance = Mathf.Min(_distanceBetweenCorners);
-            _index = System.Array.IndexOf(_distanceBetweenCorners, minDistance);
+            _indexBetweenCorners = System.Array.IndexOf(_distanceBetweenCorners, minDistance);
 
-            _tilemapPlaceIndex = GetTilePosition(_index, _spriteCorners);
+            _tilemapPlaceIndex = GetTilePosition(_indexBetweenCorners, _spriteCorners);
 
             if (_tilemapPlaceIndex != _tilemapNewPlaceIndex)
             {
@@ -61,15 +68,15 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
                 _checkTilemap.ClearAllTiles();
             }
 
-            if (_tilemap.HasTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners))))
+            if (_tilemap.HasTile(Vector3Int.RoundToInt(GetTilePosition(_indexBetweenCorners, _spriteCorners))))
             {
-                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _WrongCheckTileSprite);
-                _ItCanBePlace = false;
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_indexBetweenCorners, _spriteCorners)), _wrongCheckTileSprite);
+                _itCanBePlace = false;
             }
             else
             {
-                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _CorrectCheckTileSprite);
-                _ItCanBePlace = true;
+                _checkTilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_indexBetweenCorners, _spriteCorners)), _correctCheckTileSprite);
+                _itCanBePlace = true;
             }
         }
 
@@ -97,9 +104,11 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 
         public void PlaceBlock()
         {
-            if (_ItCanBePlace)
+            if (_itCanBePlace)
             {
-                _tilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_index, _spriteCorners)), _BlockTileSprite);
+                _tilemap.SetTile(Vector3Int.RoundToInt(GetTilePosition(_indexBetweenCorners, _spriteCorners)), _blockTileSprite);
+                _boxCollider2D.isTrigger = false;
+                _gridInventory.DeleteBlock(_invetoryID);
             }
             else
             {
@@ -107,5 +116,10 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
             }
         }
 
+
+        public void SetInvetoryIndex(int ID)
+        {
+            _invetoryID = ID;
+        }
     }
 }

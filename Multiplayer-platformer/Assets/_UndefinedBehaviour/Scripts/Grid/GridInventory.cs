@@ -6,71 +6,30 @@ namespace UndefinedBehaviour.MultiplayerPlatformer
 {
     public class GridInventory : MonoBehaviour
     {
-        private bool _isDragActive = false;
-        private Vector2 _screenPosition;
-        private Vector3 _wordPosition;
-        private GridBlock _lastGridBlock;
+        [SerializeField] private Transform[] _spawnPointBlock;
+        [SerializeField] private GameObject[] _allBlocks;
+        public GameObject[] _invetoryBlocks = new GameObject[3];
 
-        private void Awake()
+        private void Start()
         {
-            GridInventory[] controllers = FindObjectsOfType<GridInventory>();
-            if (controllers.Length > 1)
+            for (int i = 0; i < _invetoryBlocks.Length; i++)
             {
-                Destroy(gameObject);
+                SpawnBlocks(i);
             }
         }
 
-        private void Update()
+        private void SpawnBlocks(int invetoryID)
         {
-            if (_isDragActive && (UnityEngine.Input.GetMouseButtonUp(0) ||( UnityEngine.Input.touchCount == 1 && UnityEngine.Input.GetTouch(0).phase == TouchPhase.Ended)))
-            {
-                Drop();
-                return;
-            }
-
-            if (UnityEngine.Input.GetMouseButton(0))
-            {
-                Vector3 mousePos = UnityEngine.Input.mousePosition;
-                _screenPosition = new Vector2(mousePos.x, mousePos.y);
-            }
-            else if (UnityEngine.Input.touchCount > 0)
-                _screenPosition = UnityEngine.Input.GetTouch(0).position;
-            else
-                return;
-
-            _wordPosition = Camera.main.ScreenToWorldPoint(_screenPosition);
-
-            if (_isDragActive)
-                Drag();
-            else 
-            {
-                RaycastHit2D hit = Physics2D.Raycast(_wordPosition, Vector2.zero);
-                if (hit.collider != null)
-                {
-                    GridBlock gridBlock = hit.transform.gameObject.GetComponent<GridBlock>();
-                    if (gridBlock != null)
-                    {
-                        _lastGridBlock = gridBlock;
-                        InitDrag();
-                    }
-                }
-            }
+            GameObject instantiateBlock = Instantiate(_allBlocks[0], _spawnPointBlock[invetoryID].position, Quaternion.identity);
+            instantiateBlock.GetComponent<GridBlock>().SetInvetoryIndex(invetoryID);
+            _invetoryBlocks[invetoryID] = instantiateBlock;
         }
 
-        void InitDrag()
+        public void DeleteBlock(int invetoryID)
         {
-            _isDragActive = true;
-        }
-
-        void Drag()
-        {
-            _lastGridBlock.transform.position = new Vector2(_wordPosition.x, _wordPosition.y);
-        }
-
-        void Drop()
-        {
-            _lastGridBlock.PlaceBlock();
-            _isDragActive = false;
+            //ELIMINA EL BLOCKE DE LA ID Y CREA UNO NUEVO EN LA ID
+            Destroy(_invetoryBlocks[invetoryID]);
+            SpawnBlocks(invetoryID);
         }
     }
 }
